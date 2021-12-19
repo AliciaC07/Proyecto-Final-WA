@@ -1,7 +1,5 @@
-package com.umicro.usermicroservice.security;
+package com.event.eventmicroservice.config;
 
-import com.umicro.usermicroservice.security.jwt.AuthEntryPointJwt;
-import com.umicro.usermicroservice.security.jwt.AuthTokenFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SecurityConfig(MyUserDetailsService userDetailsService, AuthEntryPointJwt unauthorizedHandler, AuthTokenFilter authTokenFilter) {
         this.userDetailsService = userDetailsService;
         this.unauthorizedHandler = unauthorizedHandler;
+
         this.authTokenFilter = authTokenFilter;
     }
 
@@ -58,11 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).
-                and()
-                .authorizeRequests()
-                .antMatchers("/api/auth/**")
-                .permitAll()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/dbconsole/**")

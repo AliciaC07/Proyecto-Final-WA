@@ -1,4 +1,4 @@
-package practica.mocky.practica2pwa.config;
+package com.umicro.usermicroservice.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
