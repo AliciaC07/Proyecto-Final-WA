@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: black-jack;
+    src: url(../../assets/Fonts/blackjack/blackjack.otf);
+}
+
+@font-face {
+    font-family: milkshake;
+    src: url(../../assets/Fonts/milkshake/milkshake.ttf);
+}
+
+*{
+    font-family: milkshake;
+}
+.blackjack-font{
+    font-family: black-jack;
+}
+/*
+html{
+    min-height: 100%;
+    position:relative;
+}
+
+body {
+    background: linear-gradient(rgb(220, 176, 255), white);
+    height: 100%;
+    width: 100%;
+}*/
