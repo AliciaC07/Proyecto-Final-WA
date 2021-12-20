@@ -19,6 +19,9 @@ public class Bill {
     @Column(nullable = false)
     private String userName;
 
+    @Column
+    private String email;
+
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event eventSelected;
@@ -31,4 +34,7 @@ public class Bill {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Product> productsSelected = new ArrayList<>();
+
+    @Column
+    private Boolean finished=false;
 }

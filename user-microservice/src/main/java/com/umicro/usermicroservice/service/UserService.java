@@ -2,11 +2,16 @@ package com.umicro.usermicroservice.service;
 
 import com.umicro.usermicroservice.models.Role;
 import com.umicro.usermicroservice.models.User;
+import com.umicro.usermicroservice.models.dtos.EmailSend;
 import com.umicro.usermicroservice.models.dtos.UserDTO;
 import com.umicro.usermicroservice.repository.RoleRepository;
 import com.umicro.usermicroservice.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 
 import javax.persistence.EntityNotFoundException;
@@ -18,6 +23,9 @@ public class UserService {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    RestTemplate restTemplate;
 
     public UserService(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.roleRepository = roleRepository;
@@ -71,6 +79,15 @@ public class UserService {
         User user = findByUsername(username);
         user.setActive(false);
         return userRepository.save(user);
+    }
+
+    public String notificationSender(EmailSend emailSend) {
+
+        HttpEntity<EmailSend> bodyRequest = new HttpEntity<>(emailSend);
+        return restTemplate.exchange("http://NOTIFICATION-FACTORY/api/user-notification",
+                HttpMethod.POST,
+                bodyRequest,
+                String.class).getBody();
     }
 
 
