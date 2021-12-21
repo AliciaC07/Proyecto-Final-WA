@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'create-user', component: CreateUserComponent},
   {path:'list-user', component: ListUserComponent}, // probablemente sea mejor ponerlo en la vista de create user directamente
   {path:'view-purchased/:id', component: ViewPurchasedComponent},
-  {path:'shopping-cart', component: PlanViewerSelectorComponent},
+  {path:'plans', component: PlanViewerSelectorComponent},
   {path:'', pathMatch:'full', redirectTo:'home'}
   
 ];
