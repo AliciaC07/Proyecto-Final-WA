@@ -40,10 +40,10 @@ public class EventService {
     }
 
     public UserDTO retrieveClient(String s) {
-        return restTemplate.exchange(String.format("http://USER-FACTORY/api//auth/user/%s", s),
-                        HttpMethod.GET,
-                        null,
-                        UserDTO.class)
-                .getBody();
+
+        return restTemplate.exchange(String.format("http://USER-MICROSERVICE/api/auth/user/%s", s),
+                HttpMethod.GET,
+                null,
+                UserDTO.class).getBody();
     }
 }
