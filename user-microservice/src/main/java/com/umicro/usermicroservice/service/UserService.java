@@ -103,7 +103,7 @@ public class UserService {
     public String notificationSender(EmailSend emailSend) {
 
         HttpEntity<EmailSend> bodyRequest = new HttpEntity<>(emailSend);
-        return restTemplate.exchange("http://NOTIFICATION-FACTORY/api/user-notification",
+        return restTemplate.exchange("http://NOTIFICATION-MICROSERVICE/api/user-notification",
                 HttpMethod.POST,
                 bodyRequest,
                 String.class).getBody();

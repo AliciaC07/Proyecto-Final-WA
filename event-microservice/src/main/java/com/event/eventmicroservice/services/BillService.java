@@ -83,7 +83,7 @@ public class BillService {
     public String notificationSender(EmailSend emailSend) {
 
         HttpEntity<EmailSend> bodyRequest = new HttpEntity<>(emailSend);
-        return restTemplate.exchange("http://NOTIFICATION-FACTORY/api/user-notification",
+        return restTemplate.exchange("http://NOTIFICATION-MICROSERVICE/api/user-notification",
                 HttpMethod.POST,
                 bodyRequest,
                 String.class).getBody();
@@ -91,7 +91,7 @@ public class BillService {
     public String notificationOrder(Order order) {
 
         HttpEntity<Order> bodyRequest = new HttpEntity<>(order);
-        return restTemplate.exchange("http://NOTIFICATION-FACTORY/api/order-notification",
+        return restTemplate.exchange("http://NOTIFICATION-MICROSERVICE/api/order-notification",
                 HttpMethod.POST,
                 bodyRequest,
                 String.class).getBody();
@@ -99,16 +99,16 @@ public class BillService {
 
     public UserDTO[] retrieveClients() {
 
-        return restTemplate.exchange("http://USER-FACTORY/api/users-employee",
+        return restTemplate.exchange("http://USER-MICROSERVICE/api/users-employee",
                 HttpMethod.GET,
                 null,
                 UserDTO[].class).getBody();
     }
 
-    public String notificationOrderEmployee(OrderInfoEmployee order) {
+    public void notificationOrderEmployee(OrderInfoEmployee order) {
 
         HttpEntity<OrderInfoEmployee> bodyRequest = new HttpEntity<>(order);
-        return restTemplate.exchange("http://NOTIFICATION-FACTORY/api/employee-notification",
+        restTemplate.exchange("http://NOTIFICATION-MICROSERVICE/api/employee-notification",
                 HttpMethod.POST,
                 bodyRequest,
                 String.class).getBody();

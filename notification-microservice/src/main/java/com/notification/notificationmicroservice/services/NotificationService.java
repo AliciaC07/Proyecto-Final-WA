@@ -33,13 +33,13 @@ public class NotificationService {
     }
 
     public Boolean sendEmailNotification(EmailSend emailSend) {
-        String EMAIL = "factory@em3148.evemoonindustries.me";
+        String EMAIL = "factory@em4795.traki-tech.games";
         Email from = new Email(EMAIL);
         Email to = new Email(emailSend.getTo());
         Mail mail = new Mail();
         mail.setFrom(from);
         mail.setSubject(emailSend.getSubject());
-        mail.setTemplateId("d-a551e42d8aeb4d699380bccebfaa50d1");
+        mail.setTemplateId("d-fef79ed2abc249a591dcf19fbd16d257");
         Personalization personalization = new Personalization();
         personalization.addDynamicTemplateData("client", emailSend.getName());
         personalization.addDynamicTemplateData("username", emailSend.getUserName());
@@ -48,13 +48,13 @@ public class NotificationService {
     }
 
     public Boolean sendEmailOrderNotification(Order order){
-        String EMAIL = "factory@em3148.evemoonindustries.me";
+        String EMAIL = "factory@em4795.traki-tech.games";
         Email from = new Email(EMAIL);
         Email to = new Email(order.getEmail());
         Mail mail = new Mail();
         mail.setFrom(from);
         mail.setSubject("Order Information");
-        mail.setTemplateId("d-9bc734f18cf94821b8c8a10309bebe34");
+        mail.setTemplateId("d-7dbb1ddfb6884dd6875cbed333e74065");
         Personalization personalization = new Personalization();
         personalization.addDynamicTemplateData("event", order.getEventSelected());
         personalization.addDynamicTemplateData("first_name", order.getUserName());
@@ -65,12 +65,12 @@ public class NotificationService {
     }
 
     public Boolean sendEmailOrderNotificationEmployee(OrderInfoEmployee order){
-        String EMAIL = "factory@em3148.evemoonindustries.me";
+        String EMAIL = "factory@em4795.traki-tech.games";
         Email from = new Email(EMAIL);
         Email to = new Email(order.getEmail());
         Mail mail = new Mail();
         mail.setFrom(from);
-        mail.setTemplateId("d-a035cf52808f430e9fc1a6a1173fb83a");
+        mail.setTemplateId("d-9e36cab2916f4a86a287d72bdf7f8253");
         Personalization personalization = new Personalization();
         personalization.addDynamicTemplateData("employee_name", order.getEmployee());
         personalization.addDynamicTemplateData("type", order.getEvent());
