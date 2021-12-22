@@ -1,5 +1,6 @@
 package com.umicro.usermicroservice.repository;
 
+import com.umicro.usermicroservice.models.Role;
 import com.umicro.usermicroservice.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -15,4 +16,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     Optional<User> findUserByIdAndActiveTrue(Integer integer);
 
     Optional<User> findUserByEmailAndActiveTrue(String email);
+
+    Iterable<User> findUserByRoleAndActiveTrue(Role role);
 }

@@ -37,4 +37,12 @@ public class Bill {
 
     @Column
     private Boolean finished=false;
+
+    public List<String> getAllNameProducts(){
+        List<String> list = new ArrayList<>();
+        for (Product p : this.productsSelected){
+            list.add(p.getName());
+        }
+        return list;
+    }
 }

@@ -2,10 +2,7 @@ package com.event.eventmicroservice.controller;
 
 import com.event.eventmicroservice.models.Bill;
 import com.event.eventmicroservice.services.BillService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -20,6 +17,11 @@ public class BillController {
     @PostMapping("/close-job/{id}")
     public Bill closeJob(@PathVariable Integer id){
         return billService.closeJob(id);
+    }
+
+    @PostMapping("/order")
+    public Bill order(@RequestBody Bill bill){
+        return billService.save(bill);
     }
 
 

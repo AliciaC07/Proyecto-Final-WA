@@ -52,5 +52,12 @@ public class UserController {
         return userService.deleteUserByUsername(username);
     }
 
+    @GetMapping("/users-employee")
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<UserDTO> findAllUserEmployee(){
+        return userService.findUserByRol();
+    }
+
+
 
 }

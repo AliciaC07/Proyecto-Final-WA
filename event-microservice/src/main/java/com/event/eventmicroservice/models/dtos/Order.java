@@ -1,9 +1,9 @@
-package com.notification.notificationmicroservice.models.dto;
+package com.event.eventmicroservice.models.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -16,7 +16,7 @@ public class Order {
     private String eventSelected;
     private Float totalAmount;
     private String date;
-    private List<String> productsSelected;
+    private List<String> productsSelected = new ArrayList<>();
 
 
 }

@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -72,6 +74,23 @@ public class UserService {
             old.setEmail(user.getEmail());
         }
         return userRepository.save(old);
+    }
+
+    public Iterable<UserDTO> findUserByRol(){
+        Role role = roleRepository.findByNameAndActiveTrue("Employee")
+                .orElseThrow(()-> new EntityNotFoundException("This role was not found"));
+        Iterable<User> users = userRepository.findUserByRoleAndActiveTrue(role);
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (User u : users){
+            UserDTO userDTO = new UserDTO();
+            userDTO.setEmail(u.getEmail());
+            userDTO.setRole(u.getRole().getName());
+            userDTO.setPassword(u.getPassword());
+            userDTO.setName(u.getName());
+            userDTO.setUsername(u.getUsername());
+            userDTOS.add(userDTO);
+        }
+        return userDTOS;
     }
 
     @Transactional

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="Hi, ${client_name}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <main>
+        <h1 th:text="Hi, ${client_name}"></h1>
+        <p>You have requested a photoshoot of type <span th:text="${photoshoot_type} "></span>an employee will be assigned briefly.</p>
+    </main>
+    <table width="100%" cellspacing="0" cellpadding="0" >
+        <tbody>
+        <tr>
+            <td class="esd-block-text es-p15t es-p20b es-m-txt-c" align="left">
+                <p style="line-height: 150%; font-size: 20px;">Information</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="esd-block-text es-m-txt-c" align="left">
+                <p>Vector graphics designed by <a target="_blank" href="http://www.freepik.com/">Freepik</a>.</p>
+                <p>You are receiving this email because you have visited our site or asked us about regular newsletter</p>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" class="esd-block-text es-p10t es-m-txt-c">
+                <p style="line-height: 150%; font-size: 12px;"><a target="_blank" href style="line-height: 150%; font-size: 12px;" class="unsubscribe">Unsubscribe</a> ♦ <a target="_blank" href="https://viewstripo.email" style="font-size: 12px;">Update Preferences</a> ♦ <a target="_blank" href="https://viewstripo.email" style="font-size: 12px;">Customer Support</a></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
