@@ -9,6 +9,8 @@ import { CreateUserComponent } from './components/users/create-user/create-user.
 import { ListUserComponent } from './components/users/list-user/list-user.component';
 import { PlanViewerSelectorComponent } from './components/plan-viewer-selector/plan-viewer-selector.component';
 import { ViewPurchasedComponent } from './components/users/view-purchased/view-purchased.component';
+import { CartComponent } from './components/users/cart/cart.component';
+import { RecordComponent } from './components/record/record.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ViewPurchasedComponent } from './components/users/view-purchased/view-p
     ListUserComponent,
     PlanViewerSelectorComponent,
     ViewPurchasedComponent,
+    CartComponent,
+    RecordComponent,
   ],
   imports: [
     BrowserModule,
