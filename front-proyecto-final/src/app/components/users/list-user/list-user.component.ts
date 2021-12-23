@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../login/auth.service';
+import { User } from '../../login/models/User';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-list-user',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUserComponent implements OnInit {
 
-  constructor() { }
+  users: User[] = []
+
+  constructor(private authservice: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAllUsers().subscribe({
+      next: (response) =>{
+        this.users = response;
+        console.log(response);
+      }
+    })
+  }
+
+  deleteUser(username:string){
+    this.userService.deleteUser(username).subscribe({
+      next:(response) =>{
+        this.userService.getAllUsers().subscribe({
+          next: (res) =>{
+            this.users = res;
+          }
+        })
+      },
+      error:(e) =>{
+        alert(e.message);
+      }
+    });
   }
 
 }

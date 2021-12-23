@@ -8,9 +8,10 @@ import { HomeComponent } from './components/home/home.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
 import { ListUserComponent } from './components/users/list-user/list-user.component';
 import { PlanViewerSelectorComponent } from './components/plan-viewer-selector/plan-viewer-selector.component';
-import { ViewPurchasedComponent } from './components/users/view-purchased/view-purchased.component';
 import { CartComponent } from './components/users/cart/cart.component';
 import { RecordComponent } from './components/record/record.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,14 @@ import { RecordComponent } from './components/record/record.component';
     CreateUserComponent,
     ListUserComponent,
     PlanViewerSelectorComponent,
-    ViewPurchasedComponent,
     CartComponent,
     RecordComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

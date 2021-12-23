@@ -4,29 +4,36 @@
         <div class="col-md-8 mx-auto">
             <div class="my-card">
                 <form>
-                    <h4 class="create-user-title">Create User</h4>
+                    <h4 class="create-user-title">{{ title }}</h4>
                     <div class="row mb-4 mx-3">
                         <div class="col-md-6">
                             <label class="form-label" for="Name">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" [(ngModel)]="user.name" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="example@example.com" required>
+                            <label class="form-label" for="lastname">Lastname</label>
+                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Lastname" [(ngModel)]="user.lastName" required>
                         </div>
                     </div>
                     <div class="row mb-4 mx-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" required>
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="example@example.com" [(ngModel)]="user.email" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="confirmP" class="form-label">Confirm Password</label>
-                            <input type="password" name="password" id="password" class="form-control" required>
+                            <label for="password" class="form-label">Username</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" [(ngModel)]="user.username" required>
+                        </div>
+                    </div>
+                    <div class="row mb-4 mx-3">
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" required>
                         </div>
                     </div>
                     <div class="col-md mx-3 mb-3" style="text-align: end;">
-                        <button type="submit" class="create-btn">Create</button>
+                        <a class="c-btn cancel-btn" [routerLink]="['/home']" routerLinkActive="router-link-active">Cancel</a>
+                        <button type="submit" class="c-btn create-btn" (click)="btnAction()">{{ btnString }}</button>
                     </div>
                 </form>
             </div>

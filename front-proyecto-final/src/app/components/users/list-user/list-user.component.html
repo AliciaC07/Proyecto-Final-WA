@@ -10,46 +10,24 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">First</th>
+                        <th scope="col">Username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Type</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto@example.com</td>
-                        <td>Employee</td>
+                      <tr *ngFor="let user of users">
+                        <th scope="row">{{user.id}}</th>
+                        <td>{{user.name}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.role.name}}</td>
                         <td>
                             <span style="text-align: right;">
-                                <a href="#" class="ltu-btn ltu-btn-danger me-1">Delete</a>
-                                <a href="#" class="ltu-btn ltu-btn-warning ms-1 me-1">Update</a>
-                            </span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton@email.com</td>
-                        <td>Employee</td>
-                        <td>
-                            <span style="text-align: right;">
-                                <a href="#" class="ltu-btn ltu-btn-danger me-1">Delete</a>
-                                <a href="#" class="ltu-btn ltu-btn-warning ms-1 me-1">Update</a>
-                            </span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>LarryB@example.com</td>
-                        <td>Client</td>
-                        <td>
-                            <span style="text-align: right;">
-                                <a href="#" class="ltu-btn ltu-btn-danger me-1">Delete</a>
-                                <a href="#" class="ltu-btn ltu-btn-warning ms-1 me-1">Update</a>
-                                <a href="#" class="ltu-btn ltu-btn-primary ms-1">Record</a>
+                                <button type="button" (click)="deleteUser(user.username)" class="ltu-btn ltu-btn-danger me-1">Delete</button>
+                                <a class="ltu-btn ltu-btn-warning ms-1 me-1" [routerLink]="['/create-user','edit',user.id]" routerLinkActive="router-link-active" >Update</a>
+                                <a *ngIf="user.role.name ==='Client'" href="#" class="ltu-btn ltu-btn-primary ms-1">Record</a>
                             </span>
                         </td>
                       </tr>
