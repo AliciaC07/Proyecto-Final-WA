@@ -9,6 +9,7 @@ import { User } from './models/User';
 })
 export class AuthService {
   public userEndPoint: string = "http://localhost:8080/api";
+  public eventEndPoint: string = "http://localhost:8083/api";
   private _user?: User;
   private _token?: string;
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
@@ -50,6 +51,7 @@ export class AuthService {
     this._user = new User();
     this._user.id = response.id;
     this._user.name = response.name;
+    this._user.username = response.username;
     this._user.lastName = response.lastName;
     this._user.email = response.email;
     this._user.role = response.role;

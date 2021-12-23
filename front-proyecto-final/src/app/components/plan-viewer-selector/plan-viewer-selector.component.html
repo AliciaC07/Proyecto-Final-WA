@@ -8,15 +8,12 @@
                 </div>
                 <span>Offers:</span>
                 <ul>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
+                    <li>Base photoshoot</li>
+                    <li>5-10 photo album</li>
+                    <li>Additional product select on cart</li>
                 </ul>
                 <span style="display: block; margin-bottom: 0.2rem;">Price: RD$ 3,000</span>
-                <a class="cart-btn" href="#">Add to cart</a>
+                <a class="cart-btn" [routerLink]="['/shopping-cart', 3]" routerLinkActive="router-link-active"   (click)="createCart(3)">Add to cart</a>
             </div>
             <div class="col-md-3 col-sm-3 center">
                 <h2>Prewedding photoshoot</h2>
@@ -24,15 +21,12 @@
 
                 <span>Offers:</span>
                 <ul>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
+                    <li>Base photoshoot</li>
+                    <li>5-10 photo album</li>
+                    <li>Additional product select on cart</li>
                 </ul>
                 <span style="display: block; margin-bottom: 0.2rem;">Price: RD$ 1,000</span>
-                <a class="cart-btn" href="#">Add to cart</a>
+                <a class="cart-btn" [routerLink]="['/shopping-cart', 1]" routerLinkActive="router-link-active" (click)="createCart(1)">Add to cart</a>
             </div>
             <div class="col-md-3 col-sm-3 center">
                     <h2>Wedding photoshoot</h2>
@@ -40,16 +34,13 @@
                         <img src="../../../assets/wedding2.jpg" alt="..." class="image" >
                     </div>
                     <span>Offers:</span>
-                <ul>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                </ul>
+                    <ul>
+                        <li>Base photoshoot</li>
+                        <li>5-10 photo album</li>
+                        <li>Additional product select on cart</li>
+                    </ul>
                 <span style="display: block; margin-bottom: 0.2rem;">Price: RD$ 5,000</span>
-                <a class="cart-btn" href="#">Add to cart</a>
+                <a class="cart-btn" [routerLink]="['/shopping-cart', 2]" routerLinkActive="router-link-active" (click)="createCart(2)">Add to cart</a>
             </div>
             <div class="col-md-3 col-sm-3 center">
                     <h2>Event videoshoot</h2>
@@ -57,16 +48,13 @@
                         <img src="../../../assets/event2.jpg" class="image mb-3" alt="...">
                     </div>
                     <span>Offers:</span>
-                <ul>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                    <li>Lorem ipsum dolor</li>
-                </ul>
+                    <ul>
+                        <li>Base videoshoot</li>
+                        <li>Video editing</li>
+                        <li>Additional product select on cart</li>
+                    </ul>
                 <span style="display: block; margin-bottom: 0.2rem;">Price: RD$ 4,000</span>
-                <a class="cart-btn" href="#">Add to cart</a>
+                <a class="cart-btn" [routerLink]="['/shopping-cart', 4]" routerLinkActive="router-link-active" (click)="createCart(4)">Add to cart</a>
             </div>
         </div>
     </div>

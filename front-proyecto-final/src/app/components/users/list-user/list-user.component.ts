@@ -17,8 +17,7 @@ export class ListUserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe({
       next: (response) =>{
-        this.users = response;
-        console.log(response);
+        this.users = response.filter(user =>{ user.role.name !== 'Admin' });
       }
     })
   }

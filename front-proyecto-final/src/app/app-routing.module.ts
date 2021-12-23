@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PlanViewerSelectorComponent } from './components/plan-viewer-selector/plan-viewer-selector.component';
 import { RecordComponent } from './components/record/record.component';
+import { CartComponent } from './components/users/cart/cart.component';
 import { CreateUserComponent } from './components/users/create-user/create-user.component';
 import { ListUserComponent } from './components/users/list-user/list-user.component';
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'list-user', component: ListUserComponent}, // probablemente sea mejor ponerlo en la vista de create user directamente
   {path:'record/:id', component: RecordComponent},
   {path:'plans', component: PlanViewerSelectorComponent},
+  {path:'shopping-cart/:id', component: CartComponent},
   {path:'', pathMatch:'full', redirectTo:'home'}
   
 ];
