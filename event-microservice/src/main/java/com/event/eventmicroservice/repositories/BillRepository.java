@@ -9,4 +9,5 @@ public interface BillRepository extends CrudRepository<Bill, Integer> {
 
 
     Optional<Bill> findByIdAndFinishedFalse(Integer integer);
+    Iterable<Bill> findAllByUserName(String userName);
 }

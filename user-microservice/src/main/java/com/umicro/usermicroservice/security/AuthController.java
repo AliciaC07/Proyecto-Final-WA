@@ -45,7 +45,7 @@ public class AuthController {
     public ApiResponse registerUser(@Valid @RequestBody SignUpRequest signUpRequest){
         User user = modelMapper.map(signUpRequest, User.class);
         Role role = new Role();
-        role.setName("Client");
+        role.setName(signUpRequest.getRole());
         user.setRole(role);
         userService.save(user);
         EmailSend emailSend = new EmailSend();
@@ -53,10 +53,8 @@ public class AuthController {
         emailSend.setUserName(user.getUsername());
         emailSend.setName(user.getName()+" "+user.getLastName());
         emailSend.setSubject("Welcome to photo factory");
-        emailSend.setContent("Dear client "+user.getName()+" "+user.getLastName()+", thank you for registering with us, your username is: "+user.getUsername()+
-                ", You can now access the services that we have available at this link:\nlink here!!");
         String response = userService.notificationSender(emailSend);
-        System.out.printf(response);
+        System.out.print(response);
         return new ApiResponse(HttpStatus.OK, "User registered sucessfully.");
     }
 
