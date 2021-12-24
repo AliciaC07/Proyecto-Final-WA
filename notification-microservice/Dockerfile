@@ -4,7 +4,7 @@
 # Probando el concepto de Multi-stage.
 # Instalando Gradle para compilar al aplicación y luego lo necesario a una imagen completa.
 FROM gradle:7.1.0-jdk11 AS build
-COPY --chown=gradle:gradle . /home/gradle/src
+COPY --chown=gradle:gradle src /home/gradle/src
 WORKDIR /home/gradle/src
 RUN gradle bootJar --no-daemon
 
@@ -20,10 +20,11 @@ LABEL maintainer="Alicia Cruz <20170465@ce.pucmm.edu.do>"
 
 ENV DB_NAME=user-data
 # Puedo pasar las variables directas que serán tomadas por Spring Boot.
-ENV spring.datasource.url='jdbc:postgresql://db:5432/events_data'
+ENV spring.datasource.url='jdbc:postgresql://db:5432/notification_data'
 ENV spring.datasource.username='postgres'
 ENV spring.datasource.password='password'
 ENV eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
+
 
 
 # Añadiendo el punto de montaje en el host
@@ -36,7 +37,7 @@ EXPOSE 8080
 
 # Copiando el archivo jar generado luego de la ejecución del comando
 # gradle task bootjar, se crean el jar y se copia a la imagen.
-COPY --from=build /home/gradle/src/build/libs/*.jar event_app.jar
+COPY --from=build /home/gradle/src/build/libs/*.jar notification_app.jar
 
 #Comando que se ejecuta una vez es iniciada la aplicación.
-ENTRYPOINT ["java", "-jar", "event_app.jar"]
+ENTRYPOINT ["java", "-jar", "notification_app.jar"]
