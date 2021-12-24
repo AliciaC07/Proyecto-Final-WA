@@ -57,7 +57,7 @@ public class BillService {
             orderInfoEmployee.setEmail(userDTO.getEmail());
             notificationOrderEmployee(orderInfoEmployee);
         }
-        System.out.printf(status);
+        System.out.print(status);
         return bill1;
     }
 
@@ -65,6 +65,14 @@ public class BillService {
         return billRepository.findByIdAndFinishedFalse(id)
                 .orElseThrow(()-> new EntityNotFoundException("This Bill was not found"));
 
+    }
+
+    public Iterable<Bill> findBillByUsername(String userName){
+        return billRepository.findAllByUserName(userName);
+    }
+
+    public Iterable<Bill> findAllBills(){
+        return billRepository.findAll();
     }
 
     @Transactional

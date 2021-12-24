@@ -24,5 +24,15 @@ public class BillController {
         return billService.save(bill);
     }
 
+    @GetMapping("/orders")
+    public Iterable<Bill> findAll(){
+        return billService.findAllBills();
+    }
+
+    @GetMapping("/client/orders/{userName}")
+    public Iterable<Bill> findBillsByClient(@PathVariable String userName){
+        return billService.findBillByUsername(userName);
+    }
+
 
 }
