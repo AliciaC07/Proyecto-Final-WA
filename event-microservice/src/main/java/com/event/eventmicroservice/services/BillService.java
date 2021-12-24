@@ -8,6 +8,7 @@ import com.event.eventmicroservice.models.dtos.OrderInfoEmployee;
 import com.event.eventmicroservice.models.dtos.UserDTO;
 import com.event.eventmicroservice.repositories.BillRepository;
 import com.event.eventmicroservice.repositories.ProductRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -38,9 +39,10 @@ public class BillService {
             product.setAvailability(false);
             productRepository.save(product);
         }
-        Bill bill1 = billRepository.save(bill);
+        bill.setDate(LocalDate.now());
         Order order = new Order();
-        order.setOrderNumber("OTE-"+bill.getId());
+        order.setUserName(bill.getUserName());
+        order.setOrderNumber("OTE-"+bill.getOrderTransaction());
         order.setDate(LocalDate.now().toString());
         order.setEventSelected(bill.getEventSelected().getName());
         order.setEmail(bill.getEmail());
@@ -58,7 +60,7 @@ public class BillService {
             notificationOrderEmployee(orderInfoEmployee);
         }
         System.out.print(status);
-        return bill1;
+        return billRepository.save(bill);
     }
 
     public Bill findBillById(Integer id){
