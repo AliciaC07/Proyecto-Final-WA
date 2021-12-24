@@ -32,13 +32,12 @@ ENV eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
 # Añadiendo el punto de montaje en el host
 # Por defecto Tomcat crea los archivo temporales en esa ruta,
 # lo habilitamos para ver los log, no es necesario para nuestro ejemplo.
-VOLUME /tmp
+#VOLUME /tmp
 
 # Puertos que estarán disponibles de nuestra aplicación.
 EXPOSE 8080
 
 # Copiando el archivo jar generado luego de la ejecución del comando
 # gradle task bootjar, se crean el jar y se copia a la imagen.
-ARG JAR_FILE=target/my-application.jar
-ADD ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY build/libs/*.jar user-app.jar
+ENTRYPOINT ["java","-jar","/user-app.jar"]
