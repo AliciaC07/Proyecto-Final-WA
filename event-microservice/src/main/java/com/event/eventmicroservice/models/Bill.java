@@ -32,7 +32,10 @@ public class Bill {
     @Column
     private LocalDate date;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @Column
+    private String orderTransaction;
+
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Product> productsSelected = new ArrayList<>();
 
     @Column

@@ -1,0 +1,85 @@
+#indica la version de Docker Compose utilizada
+version: '3.8'
+#Bloque de servicios, indica los contenedores a utilizar.
+services:
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mocky_data
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
+    networks:
+      - red-app
+
+  mocky-app:       #nombre del servicio
+    image: aliciac07/mocky-app-backend:finished  #imagen utilizada si viene del registro.
+    ports:          #puertos que estaran expuestos.
+      - "8081:8080"
+    env_file:
+      - .env
+    environment:    #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+      - spring.datasource.url=jdbc:postgresql://db:5432/mocky_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks:    #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on:   #indica que primero debe subir los servicios indicados.
+      - db
+
+  mocky-app-2: #nombre del servicio
+    image: aliciac07/mocky-app-backend:finished #imagen utilizada si viene del registro.
+    ports: #puertos que estaran expuestos.
+      - "8083:8080"
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+      - spring.datasource.url=jdbc:postgresql://db:5432/mocky_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - db
+
+  mocky-app-3: #nombre del servicio
+    image: aliciac07/mocky-app-backend:finished  #imagen utilizada si viene del registro.
+    ports: #puertos que estaran expuestos.
+      - "8084:8080"
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - NOMBRE_APP=$AMBIENTE
+      - spring.datasource.url=jdbc:postgresql://db:5432/mocky_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - db
+
+  front-mocky-app:
+    image: dreamy236/mocky-app:latest
+    network_mode: host
+networks:  #bloque para las redes
+  red-app:   #indicando la red definida
+
+volumes: #Bloque para definir los volumenes
+  my-volume-compose:
+  volume:
+  postgres-data:
