@@ -3,7 +3,7 @@
 
 # Probando el concepto de Multi-stage.
 # Instalando Gradle para compilar al aplicación y luego lo necesario a una imagen completa.
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11.0.11-slim
 
 
 # Quien mantiene la versión.

@@ -11,7 +11,7 @@
 ## El comando FROM indica la imagen base.
 ## openjdk:8-jdk-alpine es una imagen de Java 8 muy ligera.
 #FROM openjdk:11.0.11-slim
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11.0.11-slim
 
 
 

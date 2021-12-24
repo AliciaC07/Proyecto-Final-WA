@@ -3,7 +3,7 @@
 
 # Probando el concepto de Multi-stage.
 # Instalando Gradle para compilar al aplicación y luego lo necesario a una imagen completa.
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11.0.11-slim
 
 # Copiando el archivo jar generado luego de la ejecución del comando
 # gradle task bootjar, se crean el jar y se copia a la imagen.
