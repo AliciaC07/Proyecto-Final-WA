@@ -7,29 +7,63 @@
                     <h2>Cart</h2>
                     <div class="col-md-6">
                         <div class="col ms-2 ps-2 " style="text-align: center;">
-                            <h2>Wedding photoshoot</h2>
-                            <img src="../../../assets/wedding2.jpg" alt="" class="image">
+                            <h2>{{imageTitle}}</h2>
+                            <img [src]="imageUri" alt="" class="image">
                             <span>Offers:</span>
                             <ul>
-                                <li>Base photoshoot</li>
-                                <li>5-10 photo album</li>
+                                <li *ngFor="let ofs of offers">{{ofs}}</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6 ps-5">
                         <h3 class="me-5">Products</h3>
-                        <div class="row">
-                            <h3></h3>
+                        <div class="row" *ngFor="let product of availableproducts">
                             <div class="form-check col-md-6">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+                                <input class="form-check-input" type="checkbox" value="" [id]="product.id" (click)="addRemove(product)">
+                                <label class="form-check-label" [for]="product.id">{{product.name}}</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md" style="text-align: end;">
-                    <button type="button" class="p-btn pay-btn col mx-3">PayPal</button>
+                    <button type="button" class="p-btn pay-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addtoBill()">
+                        Confirm
+                    </button>
                 </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Order:</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row mb-3">
+                              <div class="col-md-6">
+                                  <span class="make-block span-title">Event Type</span>
+                                  <span class="make-block">{{bill?.eventSelected?.name}}</span>
+                              </div>
+                              <div class="col-md-6">
+                                  <span class="make-block span-title">Offers:</span>
+                                  <span class="make-block" *ngFor="let ofs of offers">{{ofs}}</span>
+                              </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="make-block span-title">Products</span>
+                                <span class="make-block" *ngFor="let product of selectedProducts">{{product.name}} +RD$250</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="make-block span-title">Total amount</span>
+                                <span class="make-block">RD${{this.bill?.totalAmount}}</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer" id="paypal-btn">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
             <div class="col-md-2"></div>
         </div>

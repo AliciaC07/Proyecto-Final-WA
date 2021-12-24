@@ -40,6 +40,7 @@ export class PlanViewerSelectorComponent implements OnInit {
       this.bill = new Bill();
       this.bill.eventSelected = event;
       this.bill.userName = this.authService.user.username;
+      this.bill.email = this.authService.user.email;
 
       this.orderService.saveBill(this.bill);
       this.router.navigate(['/shopping-cart', this.bill.eventSelected.id]);

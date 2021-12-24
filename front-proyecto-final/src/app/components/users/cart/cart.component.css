@@ -39,6 +39,15 @@
     box-shadow: rgb(41, 104, 175) 0px 0px 5px;
 }
 
+.make-block{
+    display: block;
+}
+
+.span-title {
+    color: grey;
+    font-size: 20px;
+}
+
 h2, h3{
     text-align: center;
 }

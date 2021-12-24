@@ -46,4 +46,12 @@ export class OrderService {
       })
     );
   }
+
+  savePayment(postBill: Bill): Observable<Bill>{
+    return this.http.post<Bill>(`${this.authService.eventEndPoint}/order`, postBill, {headers: this.authService.appendAuthorization()}).pipe(
+      catchError(e =>{
+        return throwError(() => e);
+      })
+    );
+  }
 }
