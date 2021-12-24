@@ -22,7 +22,7 @@ services:
       - red-app
 
   eureka-server:       #nombre del servicio
-    image: aliciac07eureka-server  #imagen utilizada si viene del registro.
+    image: aliciac07/eureka-server  #imagen utilizada si viene del registro.
     ports:          #puertos que estaran expuestos.
       - "8761:8080"
     env_file:
