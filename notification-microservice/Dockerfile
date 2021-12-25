@@ -16,7 +16,6 @@ ENV DB_NAME=user-data
 ENV spring.datasource.url='jdbc:postgresql://db:5432/notification_data'
 ENV spring.datasource.username='postgres'
 ENV spring.datasource.password='password'
-ENV eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
 
 
 
