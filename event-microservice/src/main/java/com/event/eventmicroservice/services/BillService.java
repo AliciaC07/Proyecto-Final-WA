@@ -2,10 +2,7 @@ package com.event.eventmicroservice.services;
 
 import com.event.eventmicroservice.models.Bill;
 import com.event.eventmicroservice.models.Product;
-import com.event.eventmicroservice.models.dtos.EmailSend;
-import com.event.eventmicroservice.models.dtos.Order;
-import com.event.eventmicroservice.models.dtos.OrderInfoEmployee;
-import com.event.eventmicroservice.models.dtos.UserDTO;
+import com.event.eventmicroservice.models.dtos.*;
 import com.event.eventmicroservice.repositories.BillRepository;
 import com.event.eventmicroservice.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,9 +74,10 @@ public class BillService {
     }
 
     @Transactional
-    public Bill changeStatus(Integer id, String status){
-        Bill bill = findBillById(id);
-        bill.setStatus(status);
+    public Bill changeStatus(AsignedDTO asignedDTO){
+        Bill bill = findBillById(asignedDTO.getId());
+        bill.setStatus(asignedDTO.getStatus());
+        bill.setEmployee(asignedDTO.getEmployee());
         billRepository.save(bill);
         return bill;
 
