@@ -22,8 +22,9 @@ services:
 
   eureka-server:       #nombre del servicio
     image: aliciac07/eureka-server  #imagen utilizada si viene del registro.
+    restart: always
     ports:          #puertos que estaran expuestos.
-      - "8761:8080"
+      - 8761:8761
     env_file:
       - .env
     networks:    #red para conectar los equipos.
@@ -34,7 +35,7 @@ services:
   user-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
-      - "8083:8080"
+      - 8083:8083
     env_file:
       - .env
     environment: #variable de ambiente
@@ -53,7 +54,7 @@ services:
   notification-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
-      - "8084:8080"
+      - 8084:8084
     env_file:
       - .env
     environment: #variable de ambiente
