@@ -60,7 +60,7 @@ public class BillService {
     }
 
     public Bill findBillById(Integer id){
-        return billRepository.findByIdAndFinishedFalse(id)
+        return billRepository.findBillById(id)
                 .orElseThrow(()-> new EntityNotFoundException("This Bill was not found"));
 
     }

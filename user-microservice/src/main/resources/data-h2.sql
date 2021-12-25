@@ -1,4 +1,4 @@
-CREATE DATABASE user_data
+CREATE  DATABASE user_data
 WITH
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -36,7 +36,7 @@ ALTER TABLE public.user_app
 ALTER TABLE public.user_app
     ADD CONSTRAINT FK_USER_APP_ON_ROLE FOREIGN KEY (role_id) REFERENCES role (id);
 
-insert into role (id, name, active) values (1, 'Admin', true);
-insert into role (id, name, active) values (2, 'Client', true );
-insert into role (id, name, active) values (3, 'Employee', true );
-insert into user_app (id, name, email, last_name, password, username, role_id) values ( 1, 'Alicia', 'alicruz0703@gmail.com', 'Cruz', '$2a$10$XUZRhDaN7U2oNUMZtN1wNOzPL2nUptG0K29dxXmAFH9eXbGCOrTKS', 'ali00', 1);
+insert into public.role (id, name, active) values (1, 'Admin', true);
+insert into public.role (id, name, active) values (2, 'Client', true );
+insert into public.role (id, name, active) values (3, 'Employee', true );
+insert into public.user_app (id, name, email, last_name, password, username, role_id) values ( 1, 'Alicia', 'alicruz0703@gmail.com', 'Cruz', '$2a$10$XUZRhDaN7U2oNUMZtN1wNOzPL2nUptG0K29dxXmAFH9eXbGCOrTKS', 'ali00', 1);

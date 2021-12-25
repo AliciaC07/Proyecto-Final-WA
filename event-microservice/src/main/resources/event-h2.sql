@@ -29,7 +29,7 @@ CREATE TABLE if not exists public.bill
     finished     BOOLEAN,
     CONSTRAINT pk_bill PRIMARY KEY (id)
 );
-CREATE TABLE if not exists event_products
+CREATE TABLE if not exists public.event_products
 (
     event_id integer NOT NULL,
     products_id integer NOT NULL,
@@ -43,27 +43,27 @@ CREATE TABLE if not exists event_products
         ON DELETE NO ACTION
 );
 
-ALTER TABLE bill
+ALTER TABLE public.bill
     ADD CONSTRAINT FK_BILL_ON_EVENT FOREIGN KEY (event_id) REFERENCES event (id);
 
-insert into product (id ,name, availability) values (1, 'Camera', true);
-insert into product (id, name, availability) values (2, 'Tripo', true);
-insert into product (id, name, availability) values (3, 'Lights', true);
-insert into product (id, name, availability) values (4, 'Video Camera', true);
-insert into product (id, name, availability) values (5, 'Decoration', true);
-insert into event (id, name, price) values (1, 'Pre-Wedding', 1000);
-insert into event_products (event_id, products_id) values (1,1);
-insert into event_products (event_id, products_id) values (1,4);
-insert into event (id, name, price) values (2, 'Wedding', 5000);
-insert into event_products (event_id, products_id) values (2,1);
-insert into event_products (event_id, products_id) values (2,4);
-insert into event_products (event_id, products_id) values (2,3);
-insert into event_products (event_id, products_id) values (2,2);
-insert into event_products (event_id, products_id) values (2,5);
-insert into event (id, name, price) values (3, 'Birthday', 3000);
-insert into event_products (event_id, products_id) values (3,1);
-insert into event_products (event_id, products_id) values (3,3);
-insert into event_products (event_id, products_id) values (3,5);
-insert into event (id, name, price) values (4, 'Event Video', 4000);
-insert into event_products (event_id, products_id) values (4,4);
-insert into event_products (event_id, products_id) values (4,2);
+insert into public.product (id ,name, availability) values (1, 'Camera', true);
+insert into public.product (id, name, availability) values (2, 'Tripo', true);
+insert into public.product (id, name, availability) values (3, 'Lights', true);
+insert into public.product (id, name, availability) values (4, 'Video Camera', true);
+insert into public.product (id, name, availability) values (5, 'Decoration', true);
+insert into public.event (id, name, price) values (1, 'Pre-Wedding', 1000);
+insert into public.event_products (event_id, products_id) values (1,1);
+insert into public.event_products (event_id, products_id) values (1,4);
+insert into public.event (id, name, price) values (2, 'Wedding', 5000);
+insert into public.event_products (event_id, products_id) values (2,1);
+insert into public.event_products (event_id, products_id) values (2,4);
+insert into public.event_products (event_id, products_id) values (2,3);
+insert into public.event_products (event_id, products_id) values (2,2);
+insert into public.event_products (event_id, products_id) values (2,5);
+insert into public.event (id, name, price) values (3, 'Birthday', 3000);
+insert into public.event_products (event_id, products_id) values (3,1);
+insert into public.event_products (event_id, products_id) values (3,3);
+insert into public.event_products (event_id, products_id) values (3,5);
+insert into public.event (id, name, price) values (4, 'Event Video', 4000);
+insert into public.event_products (event_id, products_id) values (4,4);
+insert into public.event_products (event_id, products_id) values (4,2);
