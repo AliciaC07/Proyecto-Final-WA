@@ -15,67 +15,60 @@ services:
       - POSTGRES_DB=mocky_data
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-      - ./data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
+      - ./sql/data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
+      - ./sql/event-h2.sql:/docker-entrypoint-initdb.d/event-h2.sql
+      - ./sql/noti-h2.sql:/docker-entrypoint-initdb.d/noti-h2.sql
     networks:
       - red-app
 
-  mocky-app:       #nombre del servicio
-    image: aliciac07/mocky-app-backend:finished  #imagen utilizada si viene del registro.
+  eureka-server:       #nombre del servicio
+    image: aliciac07/eureka-server  #imagen utilizada si viene del registro.
     ports:          #puertos que estaran expuestos.
-      - "8081:8080"
+      - "8761:8080"
     env_file:
       - .env
-    environment:    #variable de ambiente
-      - NOMBRE_APP=$AMBIENTE
-      - spring.datasource.url=jdbc:postgresql://db:5432/mocky_data
-      - spring.datasource.username=postgres
-      - spring.datasource.password=password
     networks:    #red para conectar los equipos.
       - red-app
     volumes:
       - my-volume-compose:${DB_VOLUME}
-    depends_on:   #indica que primero debe subir los servicios indicados.
-      - db
 
-  mocky-app-2: #nombre del servicio
-    image: aliciac07/mocky-app-backend:finished #imagen utilizada si viene del registro.
+  user-microservice: #nombre del servicio
+    image: aliciac07/user-microservice #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
       - "8083:8080"
     env_file:
       - .env
     environment: #variable de ambiente
-      - NOMBRE_APP=$AMBIENTE
-      - spring.datasource.url=jdbc:postgresql://db:5432/mocky_data
+      - spring.datasource.url=jdbc:postgresql://db:5432/user_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
+      - eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
     networks: #red para conectar los equipos.
       - red-app
     volumes:
       - my-volume-compose:${DB_VOLUME}
     depends_on: #indica que primero debe subir los servicios indicados.
       - db
+      - eureka-server
 
-  mocky-app-3: #nombre del servicio
-    image: aliciac07/mocky-app-backend:finished  #imagen utilizada si viene del registro.
+  notification-microservice: #nombre del servicio
+    image: aliciac07/user-microservice #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
       - "8084:8080"
     env_file:
       - .env
     environment: #variable de ambiente
-      - NOMBRE_APP=$AMBIENTE
-      - spring.datasource.url=jdbc:postgresql://db:5432/mocky_data
+      - spring.datasource.url=jdbc:postgresql://db:5432/notification_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
+      - eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
     networks: #red para conectar los equipos.
       - red-app
     volumes:
       - my-volume-compose:${DB_VOLUME}
     depends_on: #indica que primero debe subir los servicios indicados.
       - db
-
-  front-mocky-app:
-    image: dreamy236/mocky-app:latest
-    network_mode: host
+      - eureka-server
 networks:  #bloque para las redes
   red-app:   #indicando la red definida
 

@@ -8,7 +8,6 @@ import com.event.eventmicroservice.models.dtos.OrderInfoEmployee;
 import com.event.eventmicroservice.models.dtos.UserDTO;
 import com.event.eventmicroservice.repositories.BillRepository;
 import com.event.eventmicroservice.repositories.ProductRepository;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -78,13 +77,9 @@ public class BillService {
     }
 
     @Transactional
-    public Bill closeJob(Integer id){
+    public Bill changeStatus(Integer id, String status){
         Bill bill = findBillById(id);
-        for (Product product : bill.getProductsSelected()) {
-            product.setAvailability(true);
-            productRepository.save(product);
-        }
-        bill.setFinished(true);
+        bill.setStatus(status);
         billRepository.save(bill);
         return bill;
 
