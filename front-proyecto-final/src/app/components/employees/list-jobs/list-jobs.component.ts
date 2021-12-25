@@ -14,7 +14,15 @@ export class ListJobsComponent implements OnInit {
   constructor(private authService: AuthService, private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.orderService.getAllBills().subscribe({
+      next: response =>{
+        this.orders = response.reverse();
+      }
+    });
+  }
 
+  assignJob(order: Bill){
+    
   }
 
 }

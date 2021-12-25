@@ -19,13 +19,11 @@
                             <!-- Ngfor -->
                             <tr *ngFor="let o of orders">
                                 <td>{{o.id}}</td>
-                                <td>{{o.finished}}</td>
+                                <td>{{o.status}}</td>
                                 <td>{{o.date}}</td>
                                 <td>
                                     <span style="text-align: right;">
-                                        <button type="button" class="ltu-btn ltu-btn-danger me-1">Delete</button>
-                                        <a class="ltu-btn ltu-btn-warning ms-1 me-1" >Update</a>
-                                        <a class="ltu-btn ltu-btn-primary ms-1">Record</a>
+                                        <button (click)="assignJob(o)" [disabled]="!(o.status !== 'Finished')"class="ltu-btn ltu-btn-primary ms-1">Assign</button>
                                     </span>
                                 </td>
                             </tr>

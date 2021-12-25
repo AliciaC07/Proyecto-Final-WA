@@ -8,7 +8,7 @@ export class Bill{
     eventSelected!: Event;
     totalAmount!: number;
     productsSelected: Product[] = [];
-    finished!: boolean;
+    status: string = 'Not assigned'; // ** Not assigned -> assigned -> finished
     orderTransaction!: string;
     allNameProducts:string[] = [];
     date!: string;
