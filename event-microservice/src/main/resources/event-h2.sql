@@ -29,6 +29,19 @@ CREATE TABLE if not exists public.bill
     finished     BOOLEAN,
     CONSTRAINT pk_bill PRIMARY KEY (id)
 );
+CREATE TABLE if not exists event_products
+(
+    event_id integer NOT NULL,
+    products_id integer NOT NULL,
+    CONSTRAINT fk2haxatw1xtgov5gf8lyat5aul FOREIGN KEY (products_id)
+        REFERENCES public.product (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT fkdnw96ssg8ohkmji7y3nxr24s5 FOREIGN KEY (event_id)
+        REFERENCES public.event (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
 
 ALTER TABLE bill
     ADD CONSTRAINT FK_BILL_ON_EVENT FOREIGN KEY (event_id) REFERENCES event (id);

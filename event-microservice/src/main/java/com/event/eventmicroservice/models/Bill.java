@@ -41,6 +41,9 @@ public class Bill {
     @Column
     private String status;
 
+    @Column
+    private String employee;
+
     public List<String> getAllNameProducts(){
         List<String> list = new ArrayList<>();
         for (Product p : this.productsSelected){
