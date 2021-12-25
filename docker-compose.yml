@@ -48,8 +48,8 @@ services:
     volumes:
       - my-volume-compose:${DB_VOLUME}
     depends_on: #indica que primero debe subir los servicios indicados.
-      - db
       - eureka-server
+      - db
 
   notification-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
@@ -67,12 +67,12 @@ services:
     volumes:
       - my-volume-compose:${DB_VOLUME}
     depends_on: #indica que primero debe subir los servicios indicados.
-      - db
       - eureka-server
+      - db
 networks:  #bloque para las redes
   red-app:   #indicando la red definida
 
 volumes: #Bloque para definir los volumenes
   my-volume-compose:
   volume:
-  postgres-data-micro:
+  postgres-data-micro1:
