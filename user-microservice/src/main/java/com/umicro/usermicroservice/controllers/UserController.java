@@ -2,6 +2,7 @@ package com.umicro.usermicroservice.controllers;
 
 import com.umicro.usermicroservice.models.User;
 import com.umicro.usermicroservice.models.dtos.UserDTO;
+import com.umicro.usermicroservice.models.dtos.UserRecieveDTO;
 import com.umicro.usermicroservice.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -54,7 +55,7 @@ public class UserController {
 
     @GetMapping("/users-employee")
     @ResponseStatus(HttpStatus.OK)
-    public Iterable<UserDTO> findAllUserEmployee(){
+    public Iterable<UserRecieveDTO> findAllUserEmployee(){
         return userService.findUserByRol();
     }
 
