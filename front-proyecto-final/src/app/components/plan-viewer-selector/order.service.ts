@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../login/auth.service';
+import { AssignedDto } from '../models/AssignedDto';
 import { Bill } from '../models/Bill';
 import { Event } from '../models/Event';
 import { Product } from '../models/Product';
@@ -65,6 +66,14 @@ export class OrderService {
 
   getAllBills(): Observable<Bill[]> {
     return this.http.get<Bill[]>(`${this.authService.eventEndPoint}/orders`, {headers: this.authService.appendAuthorization()}).pipe(
+      catchError(e =>{
+        return throwError(() => e);
+      })
+    );
+  }
+
+  assignJob(assignJob: AssignedDto): Observable<AssignedDto>{
+    return this.http.post<AssignedDto>(`${this.authService.eventEndPoint}/change-status`, assignJob, {headers: this.authService.appendAuthorization()}).pipe(
       catchError(e =>{
         return throwError(() => e);
       })

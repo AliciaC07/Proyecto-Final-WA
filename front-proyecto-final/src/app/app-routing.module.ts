@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListJobsComponent } from './components/employees/list-jobs/list-jobs.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PlanViewerSelectorComponent } from './components/plan-viewer-selector/plan-viewer-selector.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'create-user/:action/:id', component: CreateUserComponent},
   {path:'list-user', component: ListUserComponent}, // probablemente sea mejor ponerlo en la vista de create user directamente
   {path:'record/:username', component: RecordComponent},
+  {path:'list-jobs', component: ListJobsComponent},
   {path:'plans', component: PlanViewerSelectorComponent},
   {path:'shopping-cart/:id', component: CartComponent},
   {path:'', pathMatch:'full', redirectTo:'home'}
