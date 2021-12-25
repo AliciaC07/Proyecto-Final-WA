@@ -14,7 +14,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=mocky_data
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-data1:/var/lib/postgresql/data
       - ./sql/data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
       - ./sql/event-h2.sql:/docker-entrypoint-initdb.d/event-h2.sql
       - ./sql/noti-h2.sql:/docker-entrypoint-initdb.d/noti-h2.sql
@@ -75,4 +75,4 @@ networks:  #bloque para las redes
 volumes: #Bloque para definir los volumenes
   my-volume-compose:
   volume:
-  postgres-data:
+  postgres-data1:
