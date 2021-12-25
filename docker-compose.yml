@@ -13,7 +13,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
     volumes:
-      - ./postgres-data-test2:/var/lib/postgresql/data
+      - ./postgres-data-test3:/var/lib/postgresql/data
       - ./sql/data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
       - ./sql/event-h2.sql:/docker-entrypoint-initdb.d/event-h2.sql
       - ./sql/noti-h2.sql:/docker-entrypoint-initdb.d/noti-h2.sql
@@ -74,4 +74,4 @@ networks:  #bloque para las redes
 volumes: #Bloque para definir los volumenes
   my-volume-compose:
   volume:
-  postgres-data-test2:
+  postgres-data-test3:
