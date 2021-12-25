@@ -20,6 +20,18 @@ services:
     networks:
       - red-app
 
+  config-server: #nombre del servicio
+    image: aliciac07/config-server  #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8888:8888
+    env_file:
+      - .env
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+
   eureka-server:       #nombre del servicio
     image: aliciac07/eureka-server  #imagen utilizada si viene del registro.
     restart: always
@@ -31,6 +43,8 @@ services:
       - red-app
     volumes:
       - my-volume-compose:${DB_VOLUME}
+    depends_on:
+      - config-server
 
   user-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
@@ -48,6 +62,7 @@ services:
     volumes:
       - my-volume-compose:${DB_VOLUME}
     depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
       - eureka-server
       - db
 
@@ -67,6 +82,7 @@ services:
     volumes:
       - my-volume-compose:${DB_VOLUME}
     depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
       - eureka-server
       - db
 networks:  #bloque para las redes
