@@ -1,0 +1,15 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+./.idea
+./config-server/.gradle
+./eureka-erver/.gradle
+./event-microservice/.gradle
+./notification-microservice/.gradle
+./user-microservice/.gradle
+./zuul-server/.gradle

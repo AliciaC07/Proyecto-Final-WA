@@ -14,9 +14,9 @@ public class BillController {
         this.billService = billService;
     }
 
-    @PostMapping("/close-job/{id}")
-    public Bill closeJob(@PathVariable Integer id){
-        return billService.closeJob(id);
+    @PostMapping("/change-status/{id}/{status}")
+    public Bill changeStatus(@PathVariable Integer id, @PathVariable String status){
+        return billService.changeStatus(id, status);
     }
 
     @PostMapping("/order")
