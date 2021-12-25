@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface BillRepository extends CrudRepository<Bill, Integer> {
 
 
-    Optional<Bill> findByIdAndFinishedFalse(Integer integer);
+    Optional<Bill> findBillById(Integer integer);
     Iterable<Bill> findAllByUserName(String userName);
 }
