@@ -4,7 +4,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 mx-auto mt-4">
                 <div class="my-card">
-                    <h1>Orders</h1>
+                    <h1 style="text-align: center;">Orders</h1>
                     <table class="table">
                         <thead>
                             <tr>
@@ -19,11 +19,13 @@
                             <!-- Ngfor -->
                             <tr *ngFor="let o of orders">
                                 <td>{{o.id}}</td>
+                                <td>{{o.userName}}</td>
                                 <td>{{o.status}}</td>
                                 <td>{{o.date}}</td>
                                 <td>
                                     <span style="text-align: right;">
-                                        <button (click)="assignJob(o)" [disabled]="!(o.status !== 'Finished')"class="ltu-btn ltu-btn-primary ms-1">Assign</button>
+                                        <button *ngIf="o.status === 'Assigned'" type="button" (click)="assignJob(o)" class="ltu-btn ltu-btn-warning ms-1">Finish</button>
+                                        <button *ngIf="o.status === 'Not Assigned'" type="button" (click)="assignJob(o)" class="ltu-btn ltu-btn-primary ms-1">Assign</button>
                                     </span>
                                 </td>
                             </tr>

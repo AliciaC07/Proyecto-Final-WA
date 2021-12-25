@@ -36,11 +36,16 @@ export class ListJobsComponent implements OnInit {
         assignJob.status = "Finished";
         break;
       }
+      default: {
+        assignJob.status = "Finished";
+      }
     }
     assignJob.employee = this.authService.user.username;
     this.orderService.assignJob(assignJob).subscribe({
       next: () =>{
-        this.router.navigate(['list-jobs']);
+        //this.router.navigate(['list-jobs']);
+        window.location.reload();
+        console.log('clicked');
       }
     });
   }

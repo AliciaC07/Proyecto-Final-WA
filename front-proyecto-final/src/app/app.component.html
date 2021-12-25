@@ -21,7 +21,7 @@
                       </li>
                     </ul>
                   </div>
-                <a class="nav-link" [routerLink]="['/#']" routerLinkActive="router-link-active">Cart</a> <!-- manage this button on component see comments on compo-->
+                <a class="nav-link" (click)="checkCart()" routerLink="">Cart</a> <!-- manage this button on component see comments on compo-->
                 <a class="nav-link" [routerLink]="['/record','my-orders']" routerLinkActive="router-link-active" *ngIf="isAuth()">Orders</a>
                 <a class="nav-link" [routerLink]="['/list-jobs']" routerLinkActive="router-link-active" *ngIf="hasRole('Employee')">Jobs</a>
                 <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active"  *ngIf="!isAuth()">Login</a>
