@@ -1,6 +1,7 @@
 package com.event.eventmicroservice.controller;
 
 import com.event.eventmicroservice.models.Bill;
+import com.event.eventmicroservice.models.dtos.AsignedDTO;
 import com.event.eventmicroservice.services.BillService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,9 @@ public class BillController {
         this.billService = billService;
     }
 
-    @PostMapping("/change-status/{id}/{status}")
-    public Bill changeStatus(@PathVariable Integer id, @PathVariable String status){
-        return billService.changeStatus(id, status);
+    @PostMapping("/change-status")
+    public Bill changeStatus(@RequestBody AsignedDTO asignedDTO){
+        return billService.changeStatus(asignedDTO);
     }
 
     @PostMapping("/order")
