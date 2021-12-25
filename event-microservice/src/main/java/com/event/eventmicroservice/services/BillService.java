@@ -45,9 +45,9 @@ public class BillService {
         order.getProductsSelected().addAll(bill.getAllNameProducts());
         order.setTotalAmount(bill.getTotalAmount());
         String status = notificationOrder(order);
-        UserDTO[] userDTOS = retrieveClients();
+        UserRecieveDTO[] userDTOS = retrieveClients();
         System.out.println(userDTOS.length);
-        for (UserDTO userDTO : userDTOS){
+        for (UserRecieveDTO userDTO : userDTOS){
             OrderInfoEmployee orderInfoEmployee = new OrderInfoEmployee();
             orderInfoEmployee.setEmployee(userDTO.getName()+"  "+ userDTO.getLastName());
             orderInfoEmployee.setClient(order.getUserName());
@@ -100,12 +100,12 @@ public class BillService {
                 String.class).getBody();
     }
 
-    public UserDTO[] retrieveClients() {
+    public UserRecieveDTO[] retrieveClients() {
 
         return restTemplate.exchange("http://USER-MICROSERVICE/api/users-employee",
                 HttpMethod.GET,
                 null,
-                UserDTO[].class).getBody();
+                UserRecieveDTO[].class).getBody();
     }
 
     public void notificationOrderEmployee(OrderInfoEmployee order) {

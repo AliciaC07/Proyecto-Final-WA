@@ -4,6 +4,7 @@ import com.umicro.usermicroservice.models.Role;
 import com.umicro.usermicroservice.models.User;
 import com.umicro.usermicroservice.models.dtos.EmailSend;
 import com.umicro.usermicroservice.models.dtos.UserDTO;
+import com.umicro.usermicroservice.models.dtos.UserRecieveDTO;
 import com.umicro.usermicroservice.repository.RoleRepository;
 import com.umicro.usermicroservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,13 +77,13 @@ public class UserService {
         return userRepository.save(old);
     }
 
-    public Iterable<UserDTO> findUserByRol(){
+    public Iterable<UserRecieveDTO> findUserByRol(){
         Role role = roleRepository.findByNameAndActiveTrue("Employee")
                 .orElseThrow(()-> new EntityNotFoundException("This role was not found"));
         Iterable<User> users = userRepository.findUserByRoleAndActiveTrue(role);
-        List<UserDTO> userDTOS = new ArrayList<>();
+        List<UserRecieveDTO> userDTOS = new ArrayList<>();
         for (User u : users){
-            UserDTO userDTO = new UserDTO();
+            UserRecieveDTO userDTO = new UserRecieveDTO();
             userDTO.setEmail(u.getEmail());
             userDTO.setRole(u.getRole().getName());
             userDTO.setPassword(u.getPassword());
