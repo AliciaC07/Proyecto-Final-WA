@@ -54,4 +54,20 @@ export class OrderService {
       })
     );
   }
+
+  getBillsUser(username: string): Observable<Bill[]>{
+    return this.http.get<Bill[]>(`${this.authService.eventEndPoint}/client/orders/${username}`, {headers: this.authService.appendAuthorization()}).pipe(
+      catchError(e =>{
+        return throwError(() => e);
+      })
+    );
+  }
+
+  getAllBills(): Observable<Bill[]> {
+    return this.http.get<Bill[]>(`${this.authService.eventEndPoint}/orders`, {headers: this.authService.appendAuthorization()}).pipe(
+      catchError(e =>{
+        return throwError(() => e);
+      })
+    );
+  }
 }

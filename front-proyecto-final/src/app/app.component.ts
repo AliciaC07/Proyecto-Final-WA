@@ -15,4 +15,6 @@ export class AppComponent {
   isAuth(): boolean{ return this.authService.isAuthenticated() }
 
   logout() { this.authService.logout() }
+
+  //the cart button need to redirect only if ther is a cart if not do nothing or raise an alert that the cart is empty
 }

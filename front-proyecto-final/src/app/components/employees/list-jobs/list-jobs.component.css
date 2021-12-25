@@ -47,15 +47,6 @@
     box-shadow: 1px 1px 5px;
 }
 
-.my-card-title{
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    display: inline-block;
-    width: auto;
-    height: auto;
-}
-
 .my-card-title:hover{
     text-shadow: 1px 1px 5px;
 }

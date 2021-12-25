@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../login/auth.service';
 import { Bill } from '../../models/Bill';
@@ -12,6 +12,7 @@ import { render } from 'creditcardpayments/creditCardPayments';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  @ViewChild('closeModal') closeModal: any;
 
   availableproducts: Product[] = []
   products: Product[] = [];
@@ -94,6 +95,8 @@ export class CartComponent implements OnInit {
       currency: 'DOP',
       value: `${this.bill?.totalAmount}`,
       onApprove: (p) =>{
+        console.log(p);
+        this.bill!.orderTransaction = p.id;
         this.confirmPayment(this.orderService.bill);
       }
     })
@@ -110,6 +113,7 @@ export class CartComponent implements OnInit {
       next: p =>{
         let bill = new Bill();
         this.orderService.saveBill(bill);
+        this.closeModal.nativeElement.click();
         this.router.navigate(['/home']);
       }
     });

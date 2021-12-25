@@ -9,9 +9,11 @@ import { CreateUserComponent } from './components/users/create-user/create-user.
 import { ListUserComponent } from './components/users/list-user/list-user.component';
 import { PlanViewerSelectorComponent } from './components/plan-viewer-selector/plan-viewer-selector.component';
 import { CartComponent } from './components/users/cart/cart.component';
-import { RecordComponent } from './components/record/record.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RecordComponent } from './components/users/record/record.component';
+import { ListJobsComponent } from './components/employees/list-jobs/list-jobs.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     PlanViewerSelectorComponent,
     CartComponent,
     RecordComponent,
+    ListJobsComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,4 +9,7 @@ export class Bill{
     totalAmount!: number;
     productsSelected: Product[] = [];
     finished!: boolean;
+    orderTransaction!: string;
+    allNameProducts:string[] = [];
+    date!: string;
 }

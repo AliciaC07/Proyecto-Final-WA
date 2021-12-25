@@ -1,1 +1,49 @@
-<p>record works!</p>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 center mx-auto mt-4 mb-3">
+                <h1 class="mt-2">{{title}}</h1>
+                <!-- ngfor -->
+                <div class="row mx-auto" *ngFor="let bill of bills">
+                    <h3 class="mt-2">Receipt ID: OTE-{{bill.orderTransaction}}</h3>
+                    <div class="my-card mb-3 pb-2">
+                        
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+                                <span class="make-block span-title">Event Type:</span>
+                                <span class="make-block">{{bill.eventSelected.name}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="nake-block span-title">Products:</span>
+                                <!--ngfor products-->
+                                <span class="make-block" *ngFor="let p of bill.allNameProducts">{{p}}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+                                <span class="make-block span-title">Email:</span>
+                                <span class="make-block">{{bill.email}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="nake-block span-title">Total Amount:</span>
+                                <span class="make-block">RD$ {{bill.totalAmount}}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+                                <span class="make-block span-title">Finished:</span>
+                                <span class="make-block">{{bill.finished}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="nake-block span-title">Date: </span>
+                                <span class="make-block">{{bill.date}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</main>

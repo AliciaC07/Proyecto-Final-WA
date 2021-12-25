@@ -1,0 +1,39 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mx-auto mt-4">
+                <div class="my-card">
+                    <h1>Orders</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Username</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Ngfor -->
+                            <tr *ngFor="let o of orders">
+                                <td>{{o.id}}</td>
+                                <td>{{o.finished}}</td>
+                                <td>{{o.date}}</td>
+                                <td>
+                                    <span style="text-align: right;">
+                                        <button type="button" class="ltu-btn ltu-btn-danger me-1">Delete</button>
+                                        <a class="ltu-btn ltu-btn-warning ms-1 me-1" >Update</a>
+                                        <a class="ltu-btn ltu-btn-primary ms-1">Record</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</main>

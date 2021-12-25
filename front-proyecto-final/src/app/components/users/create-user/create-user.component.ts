@@ -60,9 +60,8 @@ export class CreateUserComponent implements OnInit {
   }
 
   btnAction(){
-
     switch(this.param){
-      case 'Client': {
+      case 'sign-up': {
         this.user.role = "Client";
         this.userService.registerUser(this.user).subscribe({
           next: () =>{
@@ -75,7 +74,7 @@ export class CreateUserComponent implements OnInit {
         break;
       }
       
-      case 'Employee':{
+      case 'employee':{
         this.user.role = "Employee";
         this.userService.registerUser(this.user).subscribe({
           next: () =>{

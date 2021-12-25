@@ -1,0 +1,25 @@
+.center {
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: grey;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    box-shadow: 1px 1px 5px;
+}
+
+.my-card{
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 0.01rem;
+    border-color: rgb(196, 196, 196);
+}
+
+.make-block {
+    display: block;
+}
+
+.span-title{
+    color: grey;
+    font-size: 20px;
+}

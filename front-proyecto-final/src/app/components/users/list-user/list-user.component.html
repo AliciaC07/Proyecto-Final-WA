@@ -25,9 +25,9 @@
                         <td>{{user.role.name}}</td>
                         <td>
                             <span style="text-align: right;">
-                                <button type="button" (click)="deleteUser(user.username)" class="ltu-btn ltu-btn-danger me-1">Delete</button>
+                                <button type="button" (click)="deleteUser(user.username)" *ngIf="user.role.name !=='Admin'" class="ltu-btn ltu-btn-danger me-1">Delete</button>
                                 <a class="ltu-btn ltu-btn-warning ms-1 me-1" [routerLink]="['/create-user','edit',user.id]" routerLinkActive="router-link-active" >Update</a>
-                                <a *ngIf="user.role.name ==='Client'" href="#" class="ltu-btn ltu-btn-primary ms-1">Record</a>
+                                <a *ngIf="user.role.name ==='Client'" [routerLink]="['/record', user.username]" routerLinkActive="router-link-active"  class="ltu-btn ltu-btn-primary ms-1">Record</a>
                             </span>
                         </td>
                       </tr>
