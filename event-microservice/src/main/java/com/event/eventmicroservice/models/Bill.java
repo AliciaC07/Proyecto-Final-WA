@@ -39,7 +39,7 @@ public class Bill {
     private List<Product> productsSelected = new ArrayList<>();
 
     @Column
-    private Boolean finished=false;
+    private String status;
 
     public List<String> getAllNameProducts(){
         List<String> list = new ArrayList<>();
