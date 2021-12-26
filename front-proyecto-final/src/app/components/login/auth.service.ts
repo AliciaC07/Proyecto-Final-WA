@@ -8,7 +8,7 @@ import { User } from './models/User';
   providedIn: 'root'
 })
 export class AuthService {
-  public userEndPoint: string = "http://localhost:8080/api";
+  public userEndPoint: string = "http://localhost:9000";
   public eventEndPoint: string = "http://localhost:8083/api";
   private _user?: User;
   private _token?: string;
