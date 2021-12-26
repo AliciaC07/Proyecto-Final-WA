@@ -5,6 +5,7 @@ services:
 
   db:
     image: postgres
+    restart: always
     ports:
       - "5432:5432"
     env_file:
@@ -13,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
     volumes:
-      - ./postgres-data-test3:/var/lib/postgresql/data
+      - ./postgres-data-microservice:/var/lib/postgresql/data
       - ./sql/data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
       - ./sql/event-h2.sql:/docker-entrypoint-initdb.d/event-h2.sql
       - ./sql/noti-h2.sql:/docker-entrypoint-initdb.d/noti-h2.sql
@@ -30,10 +31,11 @@ services:
     networks: #red para conectar los equipos.
       - red-app
     volumes:
-      - my-volume-compose:${DB_VOLUME}
+      - my-volume-compose:/tmp
 
   eureka-server:       #nombre del servicio
     image: aliciac07/eureka-server  #imagen utilizada si viene del registro.
+    hostname: eureka-server
     restart: always
     ports:          #puertos que estaran expuestos.
       - 8761:8761
@@ -42,7 +44,7 @@ services:
     networks:    #red para conectar los equipos.
       - red-app
     volumes:
-      - my-volume-compose:${DB_VOLUME}
+      - my-volume-compose:/tmp
     depends_on:
       - config-server
 
@@ -56,12 +58,14 @@ services:
     networks: #red para conectar los equipos.
       - red-app
     volumes:
-      - my-volume-compose:${DB_VOLUME}
+      - my-volume-compose:/tmp
     depends_on:
       - config-server
+      - eureka-server
 
   user-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
+    restart: always
     ports: #puertos que estaran expuestos.
       - 8083:8083
     env_file:
@@ -73,7 +77,28 @@ services:
     networks: #red para conectar los equipos.
       - red-app
     volumes:
-      - my-volume-compose:${DB_VOLUME}
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
+  event-microservice: #nombre del servicio
+    image: aliciac07/event-microservice #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8082:8082
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/events_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
     depends_on: #indica que primero debe subir los servicios indicados.
       - config-server
       - eureka-server
@@ -82,6 +107,7 @@ services:
 
   notification-microservice: #nombre del servicio
     image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
+    restart: always
     ports: #puertos que estaran expuestos.
       - 8084:8084
     env_file:
@@ -93,7 +119,7 @@ services:
     networks: #red para conectar los equipos.
       - red-app
     volumes:
-      - my-volume-compose:${DB_VOLUME}
+      - my-volume-compose:/tmp
     depends_on: #indica que primero debe subir los servicios indicados.
       - config-server
       - eureka-server
@@ -105,4 +131,4 @@ networks:  #bloque para las redes
 volumes: #Bloque para definir los volumenes
   my-volume-compose:
   volume:
-  postgres-data-test3:
+  postgres-data-microservice:
