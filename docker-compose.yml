@@ -84,6 +84,27 @@ services:
       - api-gateway
       - db
 
+  event-microservice: #nombre del servicio
+    image: aliciac07/event-microservice #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8082:8082
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/event_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
   notification-microservice: #nombre del servicio
     image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
     restart: always
