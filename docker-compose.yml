@@ -53,8 +53,6 @@ services:
     restart: always
     ports: #puertos que estaran expuestos.
       - 8080:8080
-    links:
-      - "eureka-server"
     env_file:
       - .env
     networks: #red para conectar los equipos.
@@ -70,12 +68,9 @@ services:
     restart: always
     ports: #puertos que estaran expuestos.
       - 8083:8083
-    links:
-      - "eureka-server"
     env_file:
       - .env
     environment: #variable de ambiente
-      - EUREKA-SERVER=eureka-server
       - spring.datasource.url=jdbc:postgresql://db:5432/user_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
@@ -94,12 +89,9 @@ services:
     restart: always
     ports: #puertos que estaran expuestos.
       - 8084:8084
-    links:
-      - "eureka-server"
     env_file:
       - .env
     environment: #variable de ambiente
-      - EUREKA-SERVER=eureka-server
       - spring.datasource.url=jdbc:postgresql://db:5432/notification_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
