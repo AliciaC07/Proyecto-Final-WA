@@ -35,6 +35,7 @@ services:
 
   eureka-server:       #nombre del servicio
     image: aliciac07/eureka-server  #imagen utilizada si viene del registro.
+    hostname: eureka-server
     restart: always
     ports:          #puertos que estaran expuestos.
       - 8761:8761
@@ -52,6 +53,8 @@ services:
     restart: always
     ports: #puertos que estaran expuestos.
       - 8080:8080
+    links:
+      - "eureka-server"
     env_file:
       - .env
     networks: #red para conectar los equipos.
@@ -67,6 +70,8 @@ services:
     restart: always
     ports: #puertos que estaran expuestos.
       - 8083:8083
+    links:
+      - "eureka-server"
     env_file:
       - .env
     environment: #variable de ambiente
@@ -89,6 +94,8 @@ services:
     restart: always
     ports: #puertos que estaran expuestos.
       - 8084:8084
+    links:
+      - "eureka-server"
     env_file:
       - .env
     environment: #variable de ambiente
