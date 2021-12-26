@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -41,6 +42,10 @@ public class EventService {
         return eventRepository.findAll();
     }
 
+    public Optional<Event> verify(String name){
+        return eventRepository.findEventByName(name);
+    }
+    @Transactional
     public void insertEvents(){
         Product product = new Product();
         product.setName("Camera");
@@ -65,23 +70,23 @@ public class EventService {
         event.getProducts().add(product);
         event.getProducts().add(product3);
         Event event1 = new Event();
-        event.setName("Wedding");
-        event.setPrice(5000.00f);
-        event.getProducts().add(product);
-        event.getProducts().add(product3);
-        event.getProducts().add(product2);
-        event.getProducts().add(product4);
+        event1.setName("Wedding");
+        event1.setPrice(5000.00f);
+        event1.getProducts().add(product);
+        event1.getProducts().add(product3);
+        event1.getProducts().add(product2);
+        event1.getProducts().add(product4);
         Event event2 = new Event();
-        event.setName("Birthday");
-        event.setPrice(3000.00f);
-        event.getProducts().add(product);
-        event.getProducts().add(product2);
-        event.getProducts().add(product4);
+        event2.setName("Birthday");
+        event2.setPrice(3000.00f);
+        event2.getProducts().add(product);
+        event2.getProducts().add(product2);
+        event2.getProducts().add(product4);
         Event event3 = new Event();
-        event.setName("Event Video");
-        event.setPrice(4000.00f);
-        event.getProducts().add(product3);
-        event.getProducts().add(product1);
+        event3.setName("Event Video");
+        event3.setPrice(4000.00f);
+        event3.getProducts().add(product3);
+        event3.getProducts().add(product1);
         List<Event> events = new ArrayList<>();
         events.add(event);
         events.add(event1);

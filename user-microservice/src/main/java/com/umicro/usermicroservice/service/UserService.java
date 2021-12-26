@@ -19,6 +19,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -58,6 +59,9 @@ public class UserService {
     public User findById(Integer id){
         return userRepository.findUserByIdAndActiveTrue(id)
                 .orElseThrow(()-> new EntityNotFoundException("This user was not found"));
+    }
+    public Optional<User> verify(String userName){
+        return userRepository.findUserByUsernameAndActiveTrue(userName);
     }
 
     @Transactional
