@@ -46,6 +46,20 @@ services:
     depends_on:
       - config-server
 
+  api-gateway: #nombre del servicio
+    image: aliciac07/api-gateway  #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8080:8080
+    env_file:
+      - .env
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:${DB_VOLUME}
+    depends_on:
+      - config-server
+
   user-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
@@ -63,10 +77,11 @@ services:
     depends_on: #indica que primero debe subir los servicios indicados.
       - config-server
       - eureka-server
+      - api-gateway
       - db
 
   notification-microservice: #nombre del servicio
-    image: aliciac07/user-microservice #imagen utilizada si viene del registro.
+    image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
     ports: #puertos que estaran expuestos.
       - 8084:8084
     env_file:
@@ -82,6 +97,7 @@ services:
     depends_on: #indica que primero debe subir los servicios indicados.
       - config-server
       - eureka-server
+      - api-gateway
       - db
 networks:  #bloque para las redes
   red-app:   #indicando la red definida
