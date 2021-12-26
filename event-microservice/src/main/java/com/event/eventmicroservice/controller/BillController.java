@@ -6,7 +6,7 @@ import com.event.eventmicroservice.services.BillService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/event")
 public class BillController {
 
     private final BillService billService;

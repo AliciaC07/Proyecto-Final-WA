@@ -13,3 +13,5 @@
 ./notification-microservice/.gradle
 ./user-microservice/.gradle
 ./zuul-server/.gradle
+./api-gateway/.gradle
+./api-gateway/.idea
