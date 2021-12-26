@@ -56,7 +56,6 @@ services:
       - spring.datasource.url=jdbc:postgresql://db:5432/user_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
-      - eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
     networks: #red para conectar los equipos.
       - red-app
     volumes:
@@ -76,7 +75,6 @@ services:
       - spring.datasource.url=jdbc:postgresql://db:5432/notification_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
-      - eureka.client.serviceUrl.defaultZone='http://eureka-server:8761/eureka'
     networks: #red para conectar los equipos.
       - red-app
     volumes:
