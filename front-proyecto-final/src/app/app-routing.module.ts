@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BarChartComponent } from './components/Charts/bar-chart/bar-chart.component';
 import { ListJobsComponent } from './components/employees/list-jobs/list-jobs.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthService } from './components/login/auth.service';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'list-jobs', component: ListJobsComponent, canActivate: [RoleGuardGuard], data:{role:['Admin', 'Employee']}},
   {path:'plans', component: PlanViewerSelectorComponent},
   {path:'shopping-cart/:id', component: CartComponent, canActivate:[AuthGuardGuard]},
+  {path:'graphs', component:BarChartComponent, canActivate:[RoleGuardGuard], data:{role:['Admin']}},
   {path:'', pathMatch:'full', redirectTo:'home'}
   
 ];

@@ -26,4 +26,11 @@ export class AppComponent {
       this.router.navigate(['/shopping-cart', this.orderService.bill.eventSelected.id])
     }
   }
+
+  checkReload(): void{
+    if(localStorage.getItem('reload') === 'false'){
+      localStorage.setItem('reload', 'true');
+    }
+    this.router.navigate(['/graphs'])
+  }
 }

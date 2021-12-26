@@ -17,6 +17,7 @@ p {
     visibility: hidden;
     opacity: 0;
     margin-left: 35%;
+    font-size: medium;
     text-align: center;
     text-decoration: none;
     border-style: solid;
@@ -35,9 +36,11 @@ p {
 
 .on-hover:hover  .no-btn{
     height: auto;
-    width: 6rem;
+    width: auto;
     padding-top: 2px;
     padding-bottom: 2px;
+    padding-left:2px;
+    padding-right: 2px;
     border-radius: 5px;
     visibility: visible;
     opacity: 1;
