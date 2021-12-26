@@ -5,6 +5,7 @@ services:
 
   db:
     image: postgres
+    restart: always
     ports:
       - "5432:5432"
     env_file:
@@ -59,14 +60,17 @@ services:
       - my-volume-compose:${DB_VOLUME}
     depends_on:
       - config-server
+      - eureka-server
 
   user-microservice: #nombre del servicio
     image: aliciac07/user-microservice #imagen utilizada si viene del registro.
+    restart: always
     ports: #puertos que estaran expuestos.
       - 8083:8083
     env_file:
       - .env
     environment: #variable de ambiente
+      - EUREKA-SERVER=eureka-server
       - spring.datasource.url=jdbc:postgresql://db:5432/user_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
@@ -82,11 +86,13 @@ services:
 
   notification-microservice: #nombre del servicio
     image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
+    restart: always
     ports: #puertos que estaran expuestos.
       - 8084:8084
     env_file:
       - .env
     environment: #variable de ambiente
+      - EUREKA-SERVER=eureka-server
       - spring.datasource.url=jdbc:postgresql://db:5432/notification_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
