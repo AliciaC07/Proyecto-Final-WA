@@ -92,7 +92,7 @@ services:
     env_file:
       - .env
     environment: #variable de ambiente
-      - spring.datasource.url=jdbc:postgresql://db:5432/event_data
+      - spring.datasource.url=jdbc:postgresql://db:5432/events_data
       - spring.datasource.username=postgres
       - spring.datasource.password=password
     networks: #red para conectar los equipos.
