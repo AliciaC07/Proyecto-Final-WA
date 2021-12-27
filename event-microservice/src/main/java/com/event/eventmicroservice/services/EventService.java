@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -37,6 +40,61 @@ public class EventService {
 
     public Iterable<Event> getAllEvents(){
         return eventRepository.findAll();
+    }
+
+    public Optional<Event> verify(String name){
+        return eventRepository.findEventByName(name);
+    }
+    @Transactional
+    public void insertEvents(){
+        Product product = new Product();
+        product.setName("Camera");
+        Product product1 = new Product();
+        product1.setName("Tripo");
+        Product product2= new Product();
+        product2.setName("Lights");
+        Product product3 = new Product();
+        product3.setName("Video Camera");
+        Product product4 = new Product();
+        product4.setName("Decoration");
+        List<Product> products = new ArrayList<>();
+        products.add(product);
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
+        products.add(product4);
+        productRepository.saveAll(products);
+        Event event = new Event();
+        event.setName("Pre-Wedding");
+        event.setPrice(1000.00f);
+        event.getProducts().add(product);
+        event.getProducts().add(product3);
+        Event event1 = new Event();
+        event1.setName("Wedding");
+        event1.setPrice(5000.00f);
+        event1.getProducts().add(product);
+        event1.getProducts().add(product3);
+        event1.getProducts().add(product2);
+        event1.getProducts().add(product4);
+        Event event2 = new Event();
+        event2.setName("Birthday");
+        event2.setPrice(3000.00f);
+        event2.getProducts().add(product);
+        event2.getProducts().add(product2);
+        event2.getProducts().add(product4);
+        Event event3 = new Event();
+        event3.setName("Event Video");
+        event3.setPrice(4000.00f);
+        event3.getProducts().add(product3);
+        event3.getProducts().add(product1);
+        List<Event> events = new ArrayList<>();
+        events.add(event);
+        events.add(event1);
+        events.add(event2);
+        events.add(event3);
+        eventRepository.saveAll(events);
+
+
     }
 
     public UserDTO retrieveClient(String s) {

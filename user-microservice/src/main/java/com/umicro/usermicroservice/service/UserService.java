@@ -19,6 +19,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -58,6 +59,9 @@ public class UserService {
     public User findById(Integer id){
         return userRepository.findUserByIdAndActiveTrue(id)
                 .orElseThrow(()-> new EntityNotFoundException("This user was not found"));
+    }
+    public Optional<User> verify(String userName){
+        return userRepository.findUserByUsernameAndActiveTrue(userName);
     }
 
     @Transactional
@@ -108,6 +112,29 @@ public class UserService {
                 HttpMethod.POST,
                 bodyRequest,
                 String.class).getBody();
+    }
+
+    @Transactional
+    public void insertAdmin(){
+        Role role = new Role();
+        Role role1 = new Role();
+        Role role2 = new Role();
+        role.setName("Admin");
+        role1.setName("Client");
+        role2.setName("Employee");
+        List<Role> roles = new ArrayList<>();
+        roles.add(role);
+        roles.add(role1);
+        roles.add(role2);
+        roleRepository.saveAll(roles);
+        User user = new User();
+        user.setName("Alicia");
+        user.setPassword("admin123");
+        user.setLastName("Cruz");
+        user.setUsername("admin");
+        user.setEmail("aliciacruzj0307@outlook.com");
+        user.setRole(role);
+        save(user);
     }
 
 

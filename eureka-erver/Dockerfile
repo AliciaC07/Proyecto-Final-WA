@@ -10,5 +10,7 @@ FROM openjdk:11.0.11-slim
 # gradle task bootjar, se crean el jar y se copia a la imagen.
 COPY build/libs/*.jar eureka_app.jar
 
+EXPOSE 8761
+
 #Comando que se ejecuta una vez es iniciada la aplicación.
 ENTRYPOINT ["java", "-jar", "eureka_app.jar"]

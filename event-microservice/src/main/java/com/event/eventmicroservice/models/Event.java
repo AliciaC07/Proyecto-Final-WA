@@ -22,7 +22,7 @@ public class Event {
     @Column
     private Float price;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Product> products = new ArrayList<>();
 
 
