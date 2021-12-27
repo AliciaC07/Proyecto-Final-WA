@@ -35,7 +35,7 @@ public class Bill {
     @Column
     private String orderTransaction;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Product> productsSelected = new ArrayList<>();
 
     @Column
