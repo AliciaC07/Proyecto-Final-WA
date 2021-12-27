@@ -1,0 +1,48 @@
+.my-card{
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: grey;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    box-shadow: 1px 1px 5px;
+}
+
+.login{
+    text-align: center;
+    margin-top:2%;
+    font-size: 25px;
+}
+
+.l-btn{
+    font-size: 18px;
+    padding: 5px 10px;
+    border-style: solid;
+    color: black;
+    border-width: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.01rem;
+    text-decoration: none;
+    background-color: rgba(194, 194, 194, 0);
+    transition: 0.3s;
+}
+
+.signup-btn{
+    border-color: rgba(252, 185, 61, 0.377);
+}
+
+.login-btn{
+    margin-left: 0.5rem;
+    border-color: rgba(50, 125, 211, 0.397);
+}
+
+.signup-btn:hover{
+    background-color: rgb(255, 193, 77);
+    box-shadow: rgb(218, 149, 23) 0px 0px 5px;
+}
+
+.login-btn:hover {
+    background-color: rgb(50, 125, 211);
+    box-shadow: rgb(41, 104, 175) 0px 0px 5px;
+}

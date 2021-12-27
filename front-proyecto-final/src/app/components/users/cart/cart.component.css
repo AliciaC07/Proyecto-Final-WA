@@ -1,0 +1,53 @@
+.center {
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 0;
+    background-color: rgba(236, 236, 236, 0.384);
+    border-radius: 5px;
+    transition: box-shadow 0.4s;
+}
+
+.image {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0px 0px 5px;
+    margin-bottom: 0.4rem;
+}
+
+.p-btn{
+    font-size: 18px;
+    padding: 5px 10px;
+    border-style: solid;
+    color: black;
+    border-width: 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 0.01rem;
+    text-decoration: none;
+    background-color: rgba(194, 194, 194, 0);
+    transition: 0.3s;
+}
+
+.pay-btn{
+    margin-left: 0.5rem;
+    border-color: rgba(50, 125, 211, 0.397);
+}
+
+.pay-btn:hover {
+    background-color: rgb(50, 125, 211);
+    box-shadow: rgb(41, 104, 175) 0px 0px 5px;
+}
+
+.make-block{
+    display: block;
+}
+
+.span-title {
+    color: grey;
+    font-size: 20px;
+}
+
+h2, h3{
+    text-align: center;
+}

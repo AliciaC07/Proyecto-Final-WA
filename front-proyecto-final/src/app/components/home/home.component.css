@@ -1,0 +1,48 @@
+.image {
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px;
+}
+
+p {
+    font-size: large;
+}
+
+.on-hover {
+    margin-bottom: 15%;
+}
+
+.no-btn{
+    display: inline-block;
+    visibility: hidden;
+    opacity: 0;
+    margin-left: 35%;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 0.01rem;
+    box-shadow: grey 1px 1px 10px;
+    border-color: grey;
+    color: grey;
+    transition: 1s, visibility 0s, opacity 0.2s;
+}
+
+.no-btn:hover {
+    color: rgb(62, 129, 173);
+    box-shadow: rgb(62, 129, 173) 1px 1px 10px;
+    border-color: rgb(62, 129, 173);
+}
+
+.on-hover:hover  .no-btn{
+    height: auto;
+    width: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left:2px;
+    padding-right: 2px;
+    border-radius: 5px;
+    visibility: visible;
+    opacity: 1;
+
+}

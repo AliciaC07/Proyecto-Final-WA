@@ -1,0 +1,26 @@
+<main>
+    <div class="container mt-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 mx-auto">
+            <div class="my-card">
+                <form>
+                    <h4 class="login">Photo Phactory</h4>
+                    <div class="col-md mx-3 mb-4">
+                        <label class="form-label" for="username">Username</label>
+                        <input class="form-control" type="text" minlength="3" id="username" name="username" placeholder="Username" [(ngModel)]="user.username" required>
+                    </div>
+                    <div class="col-md mx-3 mb-4">
+                        <label class="form-label" for="password">Password</label>
+                        <input class="form-control" type="password" minlength="3" id="password" name="password" placeholder="Password" [(ngModel)]="user.password" required>
+                    </div>
+                    <div class="col-md mx-3 mb-3" style="text-align: end;">
+                        <a class="l-btn signup-btn" [routerLink]="['/create-user', 'sign-up']"
+                        routerLinkActive="router-link-active">Sign up</a>
+                        <button class="l-btn login-btn" type="submit" (click)="login()">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</main>

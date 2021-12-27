@@ -1,0 +1,48 @@
+.my-card {
+    border-style: solid;
+    border-width: 0.1rem;
+    border-radius: 10px;
+    border-color: grey;
+    height: auto;
+    width: auto;
+    box-shadow: 1px 1px 5px;
+}
+
+.create-user-title{
+    text-align: center;
+    margin-top:2%;
+    margin-bottom: 2%;
+    font-size: 25px;
+}
+
+.c-btn{
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(194, 194, 194, 0);
+    transition: 0.3s;
+    border-style: solid;
+    border-width: 0.01rem;
+    text-decoration: none;
+    color: black;
+}
+
+.cancel-btn{
+    border-color: rgba(223, 58, 58, 0.253);
+}
+
+.create-btn{
+    margin-left: 0.5rem;
+    border-color: rgba(50, 125, 211, 0.397);
+}
+
+.cancel-btn:hover {
+    background-color: rgb(223, 58, 58);
+    box-shadow: rgb(179, 75, 75) 0px 0px 5px;
+}
+
+.create-btn:hover {
+    
+    background-color: rgb(50, 125, 211);
+    box-shadow: rgb(41, 104, 175) 0px 0px 5px;
+}
