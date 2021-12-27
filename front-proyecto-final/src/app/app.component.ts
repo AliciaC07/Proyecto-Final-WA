@@ -33,4 +33,11 @@ export class AppComponent {
     }
     this.router.navigate(['/graphs'])
   }
+
+  /*
+    Stuff to do: 
+    change buttons y-padding
+    change signup guards
+    change letter style too ugly
+  */
 }

@@ -28,26 +28,29 @@ export class ListJobsComponent implements OnInit {
 
     assignJob.id = order.id;
     switch(order.status){
-      case 'Not Assigned':{
+      case 'Not assigned':{
         assignJob.status = "Assigned";
+        assignJob.employee = this.authService.user.username;
+        this.orderService.assignJob(assignJob).subscribe({
+          next: () =>{
+            this.router.navigate(['/home']);
+            console.log('clicked');
+          }
+        });
         break;
       }
       case 'Assigned': {
         assignJob.status = "Finished";
+        assignJob.employee = this.authService.user.username;
+        this.orderService.assignJob(assignJob).subscribe({
+          next: () =>{
+            this.router.navigate(['/home']);
+            console.log('clicked');
+          }
+        });
         break;
       }
-      default: {
-        assignJob.status = "Finished";
-      }
     }
-    assignJob.employee = this.authService.user.username;
-    this.orderService.assignJob(assignJob).subscribe({
-      next: () =>{
-        //this.router.navigate(['list-jobs']);
-        window.location.reload();
-        console.log('clicked');
-      }
-    });
   }
 
 }

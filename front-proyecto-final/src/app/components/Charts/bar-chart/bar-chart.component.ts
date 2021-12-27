@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NavigationEnd, Router } from '@angular/router';
+import { Bar, NgxChartsModule } from '@swimlane/ngx-charts';
 import { OrderService } from '../../plan-viewer-selector/order.service';
 import { BarData } from '../model/single';
 
@@ -10,9 +11,8 @@ import { BarData } from '../model/single';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit, AfterViewInit {
-  double: BarData[] = [];
-  single: BarData[] = [];
+export class BarChartComponent implements OnInit {
+  single?: BarData[];
   view: any[] = [700,400];
   //options
   showXAxis = true;
@@ -27,8 +27,9 @@ export class BarChartComponent implements OnInit, AfterViewInit {
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
+  mySubscription: any;
 
-  constructor(private orderService: OrderService) { 
+  constructor(private orderService: OrderService, private router: Router) { 
 
    }
   
@@ -36,37 +37,31 @@ export class BarChartComponent implements OnInit, AfterViewInit {
     let notAssigned: BarData = {name:'Not Assigned', value: 0};
     let assigned: BarData = {name:'Assigned', value: 0};
     let finished: BarData = {name: 'Finished', value: 0};
-    this.single.push(notAssigned, assigned, finished);
+    let aux: BarData[] = [];
+    aux.push(notAssigned, assigned, finished);
     this.orderService.getAllBills().subscribe({
       next: response => {
         response.forEach(bill =>{
           switch(bill.status){
-            case 'Not Assigned': {
-              this.single[0].value += 1;
+            case 'Not assigned': {
+              aux[0].value += 1;
               break;
             }
 
             case 'Assigned': {
-              this.single[1].value += 1;
+              aux[1].value += 1;
               break;
             }
 
             case 'Finished': {
-              this.single[2].value += 1;
+              aux[2].value += 1;
               break;
             }
           }
-        });        
+        });
+        this.single = aux;        
       }
     })
-    if(localStorage.getItem('reload') === 'true'){
-      window.location.reload()
-      localStorage.setItem('reload','false');
-    }
-  }
-
-  ngAfterViewInit(): void {
-      this.double = this.single;
   }
 
   onSelect(event:any) {

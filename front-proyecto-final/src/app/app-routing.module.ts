@@ -17,7 +17,7 @@ import { RoleGuardGuard } from './shared/Guards/role-guard.guard';
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'home', component: HomeComponent},
-  {path:'create-user/:action', component: CreateUserComponent, canActivate: [AuthGuardGuard]},
+  {path:'create-user/:action', component: CreateUserComponent},
   {path:'create-user/:action/:id', component: CreateUserComponent, canActivate: [RoleGuardGuard], data: {role:['Admin']}},
   {path:'list-user', component: ListUserComponent, canActivate: [RoleGuardGuard], data:{role:['Admin']}}, // probablemente sea mejor ponerlo en la vista de create user directamente
   {path:'record/:username', component: RecordComponent, canActivate: [AuthGuardGuard]},
