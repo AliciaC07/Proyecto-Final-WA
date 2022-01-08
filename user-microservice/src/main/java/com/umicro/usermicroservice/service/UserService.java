@@ -135,6 +135,14 @@ public class UserService {
         user.setEmail("aliciacruzj0307@outlook.com");
         user.setRole(role);
         save(user);
+        User user1 = new User();
+        user1.setName("Ruben");
+        user1.setPassword("admin123");
+        user1.setLastName("Diaz");
+        user1.setUsername("rb00");
+        user1.setEmail("rubenosmani.dc@gmail.com");
+        user1.setRole(role2);
+        save(user1);
     }
 
 
