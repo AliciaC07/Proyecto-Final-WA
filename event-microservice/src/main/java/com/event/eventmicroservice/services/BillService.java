@@ -78,9 +78,18 @@ public class BillService {
         Bill bill = findBillById(asignedDTO.getId());
         bill.setStatus(asignedDTO.getStatus());
         bill.setEmployee(asignedDTO.getEmployee());
+        if(asignedDTO.getStatus().equalsIgnoreCase("Finished")){
+            available(bill);
+        }
         billRepository.save(bill);
         return bill;
 
+    }
+    public void available(Bill bill){
+        for (Product p : bill.getProductsSelected()){
+            p.setAvailability(true);
+            productRepository.save(p);
+        }
     }
 
     public String notificationSender(EmailSend emailSend) {
