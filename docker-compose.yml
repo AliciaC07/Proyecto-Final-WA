@@ -128,10 +128,7 @@ services:
 
   photo-phactory:
     image: dreamy236/photo-phactory:latest
-    ports:
-      - 4200:80
-    networks:
-      - red-app
+    network_mode: host
 networks:  #bloque para las redes
   red-app:   #indicando la red definida
 
