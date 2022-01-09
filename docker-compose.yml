@@ -14,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
     volumes:
-      - ./postgres-data-microservice:/var/lib/postgresql/data
+      - ./postgres-data-microservice:/db/postgresql/data
       - ./sql/data-h2.sql:/docker-entrypoint-initdb.d/data-h2.sql
       - ./sql/event-h2.sql:/docker-entrypoint-initdb.d/event-h2.sql
       - ./sql/noti-h2.sql:/docker-entrypoint-initdb.d/noti-h2.sql
@@ -64,7 +64,7 @@ services:
       - eureka-server
 
   user-microservice: #nombre del servicio
-    image: aliciac07/user-microservice #imagen utilizada si viene del registro.
+    image: aliciac07/user-microservice:1.1 #imagen utilizada si viene del registro.
     restart: always
     ports: #puertos que estaran expuestos.
       - 8083:8083
@@ -125,6 +125,13 @@ services:
       - eureka-server
       - api-gateway
       - db
+
+  photo-phactory:
+    image: dreamy236/photo-phactory:latest
+    ports:
+      - 4200:80
+    networks:
+      - red-app
 networks:  #bloque para las redes
   red-app:   #indicando la red definida
 
