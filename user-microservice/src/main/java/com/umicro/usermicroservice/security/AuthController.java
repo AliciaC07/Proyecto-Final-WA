@@ -22,7 +22,6 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/user/")
-@CrossOrigin
 public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
