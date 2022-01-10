@@ -84,6 +84,48 @@ services:
       - api-gateway
       - db
 
+  user-microservice-2: #nombre del servicio
+    image: aliciac07/user-microservice:1.1 #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8086:8086
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/user_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
+  user-microservice-3: #nombre del servicio
+    image: aliciac07/user-microservice:1.1 #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8087:8087
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/user_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
   event-microservice: #nombre del servicio
     image: aliciac07/event-microservice #imagen utilizada si viene del registro.
     restart: always
@@ -105,11 +147,96 @@ services:
       - api-gateway
       - db
 
+
+  event-microservice-2: #nombre del servicio
+    image: aliciac07/event-microservice #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8088:8088
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/events_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
+  event-microservice-3: #nombre del servicio
+    image: aliciac07/event-microservice #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8089:8089
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/events_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
   notification-microservice: #nombre del servicio
     image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
     restart: always
     ports: #puertos que estaran expuestos.
       - 8084:8084
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/notification_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
+  notification-microservice-2: #nombre del servicio
+    image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8090:8090
+    env_file:
+      - .env
+    environment: #variable de ambiente
+      - spring.datasource.url=jdbc:postgresql://db:5432/notification_data
+      - spring.datasource.username=postgres
+      - spring.datasource.password=password
+    networks: #red para conectar los equipos.
+      - red-app
+    volumes:
+      - my-volume-compose:/tmp
+    depends_on: #indica que primero debe subir los servicios indicados.
+      - config-server
+      - eureka-server
+      - api-gateway
+      - db
+
+  notification-microservice-3: #nombre del servicio
+    image: aliciac07/notification-microservice #imagen utilizada si viene del registro.
+    restart: always
+    ports: #puertos que estaran expuestos.
+      - 8092:8092
     env_file:
       - .env
     environment: #variable de ambiente
